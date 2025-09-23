@@ -1,2 +1,5 @@
-# FIT3179-Homework-Week-9
-Week 9 Vega-Lite map creation
+# FIT3179
+Assignment 2
+-----
+Homework Week 9: Vega-Lite Maps
+-----
