@@ -25,7 +25,7 @@
     {
       "transform": [
         {
-          "calculate": "datum.properties.NAME + ' did not participate'",
+          "calculate": "datum.properties.NAME + ' has no recorded data'",
           "as": "note"
         }
       ],
