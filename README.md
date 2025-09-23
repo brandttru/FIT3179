@@ -1,5 +1,7 @@
 # FIT3179
-Assignment 2
------
-Homework Week 9: Vega-Lite Maps
------
+[Root page](https://brandttru.github.io/FIT3179/index.html)
+
+## Assignment 2
+
+## Homework Week 9: Vega-Lite Maps
+
