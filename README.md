@@ -7,4 +7,4 @@
 [International Mathematical Olympiad Top 3 Finishes by Country (1993-2023)](https://brandttru.github.io/FIT3179/Week%209/week9.html)
 
 ## Homework Week 10: Interactive Charts with Vega-Lite
-[INSERT TITLE](https://brandttru.github.io/FIT3179/Week%2010/week10.html)
+[History of Country Average Points in the IMO (1993-2024)](https://brandttru.github.io/FIT3179/Week%2010/week10.html)
