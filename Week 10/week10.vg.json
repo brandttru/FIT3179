@@ -3,7 +3,7 @@
   "width": 900,
   "height": 500,
   "title": {
-    "text": "History of IMO Individuals Total Score",
+    "text": "History of Country Average Points in the IMO (1993-2023)",
     "fontSize": 25,
     "anchor": "middle",
     "color": "#000000",
@@ -14,37 +14,45 @@
     "url": "https://raw.githubusercontent.com/brandttru/FIT3179/refs/heads/main/data/individual_results_df.csv"
   },
 
+  "transform": [ 
+    {
+        "filter": "year(datum.year) >= 1993"
+    },
+    {
+      "aggregate": [
+        {"op": "mean", "field": "total", "as": "avg_points"}
+      ],
+      "groupby": ["year", "country"]
+    }
+  ],
+
   "mark": {
-    "type": "point",
-    "filled": true,
+    "type": "line",
     "opacity": 0.8,
-    "size": 60
+    "size": 3
   },
 
   "encoding": {
     "x": {
-      "field": "individual_rank",
-      "type": "quantitative",
-      "title": "Rank",
-      "scale": {"reverse": true}
+        "field": "year",
+        "type": "temporal",
+        "title": "year"
     },
     "y": {
-      "field": "total",
-      "type": "quantitative",
-      "title": "Points"
+        "field": "avg_points",
+        "type": "quantitative", 
+        "title": "Average Points"
     },
     "color": {
-      "field": "country",
-      "type": "nominal",
-      "title": "Country",
-      "legend": {"orient": "right"}
+        "field": "country",
+        "type": "nominal",
+        "title": "Country",
+        "legend": {"orient": "right"}
     },
     "tooltip": [
-      {"field": "contestant", "type": "nominal", "title": "Contestant"},
-      {"field": "country", "type": "nominal", "title": "Country"},
-      {"field": "year", "type": "temporal", "title": "Year", "timeUnit": "year"},
-      {"field": "individual_rank", "type": "quantitative", "title": "Rank"},
-      {"field": "total", "type": "quantitative", "title": "Points"}
+        {"field": "country", "type": "nominal", "title": "Country"},
+        {"field": "year", "type": "temporal", "title": "Year", "timeUnit": "year"},
+        {"field": "avg_points", "type": "quantitative", "title": "Average Points"}
     ]
   },
 
