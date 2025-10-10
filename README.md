@@ -2,6 +2,7 @@
 [Root page](https://brandttru.github.io/FIT3179/index.html)
 
 ## Assignment 2
+[The Impact of Nationality and Gender at the IMO](https://brandttru.github.io/FIT3179/Assignment%202/assignment2.html)
 
 ## Homework Week 9: Vega-Lite Maps
 [International Mathematical Olympiad Top 3 Finishes by Country (1993-2023)](https://brandttru.github.io/FIT3179/Week%209/week9.html)
