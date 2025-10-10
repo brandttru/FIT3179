@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 900,
+  "height": 500,
+  "title": {
+    "text": "History of Country Average Points in the IMO (1993-2024)",
+    "fontSize": 25,
+    "anchor": "middle",
+    "color": "#000000",
+    "offset": 15
+  },
+  
+  "data": {
+    "url": "https://raw.githubusercontent.com/brandttru/FIT3179/refs/heads/main/data/timeline_df.csv"
+  },
+
+  "transform": [
+    {
+      "fold": ["male_contestant", "female_contestant"],
+      "as": ["gender", "count"]
+    }
+  ],
+
+  "mark": {
+    "type": "line",
+    "point": true,
+    "tooltip": true
+  },
+
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "temporal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "count",
+      "type": "quantitative", 
+      "title": "Number of contestants"
+    },
+    "color": {
+      "field": "gender",
+      "type": "nominal",
+      "title": "Gender",
+      "scale": {
+        "domain": ["male_contestant", "female_contestant"],
+        "range": ["blue", "red"]
+      }
+    }
+  },
+
+
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    }
+  }
+}
