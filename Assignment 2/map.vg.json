@@ -65,7 +65,7 @@
                 "field": "team_size_female",
                 "type": "quantitative",
                 "scale": {"scheme": "reds"},
-                "legend": {"title": "Number of Female Participants"}
+                "legend": {"title": "Number of Female Participants", "format": "d"}
             },
             "tooltip": [
                 {"field": "country", "type": "nominal", "title": "Country"},
