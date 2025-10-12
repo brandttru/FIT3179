@@ -40,10 +40,7 @@
             "as": "selected_medal_count"
         }
     ],
-    "mark": {
-        "type": "circle",
-        "opacity": 0.8
-    },
+
     "encoding": {
         "x": {
             "field": "total_appearances",
@@ -54,22 +51,55 @@
             "field": "selected_medal_count",
             "type": "quantitative",
             "title": "Medals"
-        },
-        "size": {
-            "field": "total_participants",
-            "type": "quantitative",
-            "legend": {
-                "title": "Number of Participants",
-                "format": "d"
+        }
+    },
+    
+    "layer": [
+        {
+            "mark": {
+                "type": "circle",
+                "opacity": 0.8
+            },
+            "encoding": {
+                "size": {
+                    "field": "total_participants",
+                    "type": "quantitative",
+                    "legend": {
+                        "title": "Number of Participants",
+                        "format": "d"
+                    },
+                    "scale": {"range": [0,2000]}
+                },
+                "tooltip": [
+                    {"field": "country", "type": "nominal", "title": "Country"},
+                    {"field": "total_appearances", "type": "quantitative", "title": "Appearances"},
+                    {"field": "no_of_gold", "type": "quantitative", "title": "Gold Medals"},
+                    {"field": "no_of_silver", "type": "quantitative", "title": "Silver Medals"},
+                    {"field": "no_of_bronze", "type": "quantitative", "title": "Bronze Medals"},
+                    {"field": "total_participants", "type": "quantitative", "title": "Total Participants"}
+                ]
             }
         },
-        "tooltip": [
-            {"field": "country", "type": "nominal", "title": "Country"},
-            {"field": "total_appearances", "type": "quantitative", "title": "Appearances"},
-            {"field": "no_of_gold", "type": "quantitative", "title": "Gold Medals"},
-            {"field": "no_of_silver", "type": "quantitative", "title": "Silver Medals"},
-            {"field": "no_of_bronze", "type": "quantitative", "title": "Bronze Medals"},
-            {"field": "total_participants", "type": "quantitative", "title": "Total Participants"}
-        ]
-    }
+        {
+            "transform": [
+                {
+                    "filter": "datum.total_appearances > 40 && datum.selected_medal_count > 25"
+                }
+            ],
+            "mark": {
+                "type": "text",
+                "align": "right",
+                "baseline": "middle",
+                "dx": -10,
+                "fontSize": 11.5,
+                "fontStyle": "italic"
+            },
+            "encoding": {
+                "text": {
+                    "field": "country",
+                    "type": "nominal"
+                }
+            }
+        }
+    ]
 }
