@@ -1,0 +1,75 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 600,
+    "title": {
+        "text": "Medals awarded at the International Mathematical Olympiad (1993–2024)",
+        "fontSize": 25,
+        "anchor": "middle",
+        "color": "#000000",
+        "offset": 15
+    },
+    "data": {
+        "url": "https://raw.githubusercontent.com/brandttru/FIT3179/main/data/country_results_df.csv"
+    },
+    "params": [
+        {
+            "name": "medal_type",
+            "value": "no_of_gold",
+            "bind": {
+                "input": "select",
+                "options": ["no_of_gold", "no_of_silver", "no_of_bronze"],
+                "labels": ["Gold Medals", "Silver Medals", "Bronze Medals"],
+                "name": "Medal Type: "
+            }
+        }
+    ],
+    "transform": [
+        {
+            "aggregate": [
+                {"op": "count", "as": "total_appearances"},
+                {"op": "sum", "field": "awards_gold", "as": "no_of_gold"},
+                {"op": "sum", "field": "awards_silver", "as": "no_of_silver"},
+                {"op": "sum", "field": "awards_bronze", "as": "no_of_bronze"},
+                {"op": "sum", "field": "team_size_all", "as": "total_participants"}
+            ],
+            "groupby": ["country"]
+        },
+        {
+            "calculate": "medal_type == 'awards_gold' ? datum.no_of_gold : medal_type == 'awards_silver' ? datum.no_of_silver : datum.no_of_bronze",
+            "as": "selected_medal_count"
+        }
+    ],
+    "mark": {
+        "type": "circle",
+        "opacity": 0.8
+    },
+    "encoding": {
+        "x": {
+            "field": "total_appearances",
+            "type": "quantitative",
+            "title": "Total Appearances"
+        },
+        "y": {
+            "field": "selected_medal_count",
+            "type": "quantitative",
+            "title": "Medals"
+        },
+        "size": {
+            "field": "total_participants",
+            "type": "quantitative",
+            "legend": {
+                "title": "Number of Participants",
+                "format": "d"
+            }
+        },
+        "tooltip": [
+            {"field": "country", "type": "nominal", "title": "Country"},
+            {"field": "total_appearances", "type": "quantitative", "title": "Appearances"},
+            {"field": "no_of_gold", "type": "quantitative", "title": "Gold Medals"},
+            {"field": "no_of_silver", "type": "quantitative", "title": "Silver Medals"},
+            {"field": "no_of_bronze", "type": "quantitative", "title": "Bronze Medals"},
+            {"field": "total_participants", "type": "quantitative", "title": "Total Participants"}
+        ]
+    }
+}
