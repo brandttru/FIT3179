@@ -3,7 +3,7 @@
     "width": 800,
     "height": 600,
     "title": {
-        "text": "Heatmap",
+        "text": "Heatmap of Top Countries' Scores in IMO Problems (1993-2024)",
         "fontSize": 25,
         "anchor": "middle",
         "color": "#000000",
@@ -28,7 +28,7 @@
     ],
     "transform": [
         {
-            "filter": "datum.country == 'Australia' || datum.country == 'People\\s Republic of China' || datum.country == 'United States of America' || datum.country == 'Russia' || datum.country == 'Republic of Korea' || datum.country == 'Japan' || datum.country == 'Canada' || datum.country == 'Germany' || datum.country == 'India' || datum.country == 'United Kingdom'"
+            "filter": "datum.country == 'Australia' || datum.country == 'People\\'s Republic of China' || datum.country == 'United States of America' || datum.country == 'Russia' || datum.country == 'Republic of Korea' || datum.country == 'Japan' || datum.country == 'Canada' || datum.country == 'Germany' || datum.country == 'India' || datum.country == 'United Kingdom'"
         },
         {
             "filter": "datum.year == year_selected"
@@ -36,6 +36,10 @@
         {
             "fold": ["p1", "p2", "p3", "p4", "p5", "p6", "p7"],
             "as": ["problem", "score"]
+        },
+        {
+            "calculate": "replace(datum.problem, 'p', 'Problem ')",
+            "as": "problem_label"
         }
     ],
     "mark": "rect",
@@ -46,13 +50,19 @@
             "title": "Country"
         },
         "y": {
-            "field": "problem",
+            "field": "problem_label",
             "type": "nominal",
             "title": "Problem Number"
         },
         "color": {
             "field": "score",
-            "type": "quantitative"
+            "type": "quantitative",
+            "scale": {
+                "scheme": "greens"
+            },
+            "legend": {
+                "title": "Score"
+            }
         }
     }
 }
