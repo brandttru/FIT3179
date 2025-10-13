@@ -63,6 +63,11 @@
             "legend": {
                 "title": "Score"
             }
-        }
+        },
+        "tooltip": [
+            {"field": "country", "type": "nominal", "title": "Country"},
+            {"field": "problem_label", "type": "nominal", "title": "Problem"},
+            {"field": "score", "type": "quantitative", "title": "Score: "}
+        ]
     }
 }
