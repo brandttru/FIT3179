@@ -84,7 +84,10 @@
                 },
                 "color": {
                     "field": "continent",
-                    "type": "nominal"
+                    "type": "nominal",
+                    "legend": {
+                        "title": "Continent"
+                    }
                 },
                 "tooltip": [
                     {"field": "country", "type": "nominal", "title": "Country"},

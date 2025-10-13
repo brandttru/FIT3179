@@ -1,0 +1,58 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 600,
+    "title": {
+        "text": "Heatmap",
+        "fontSize": 25,
+        "anchor": "middle",
+        "color": "#000000",
+        "offset": 15
+    },
+    "data": {
+        "url": "https://raw.githubusercontent.com/brandttru/FIT3179/main/data/country_results_df.csv"
+    },
+    "params": [
+        {
+            "name": "year_selected",
+            "value": 2024,
+            "bind": {
+                "input": "range",
+                "min": 1993,
+                "max": 2024,
+                "step": 1,
+                "name": "Year: "
+            }
+
+        }
+    ],
+    "transform": [
+        {
+            "filter": "datum.country == 'Australia' || datum.country == 'People\\s Republic of China' || datum.country == 'United States of America' || datum.country == 'Russia' || datum.country == 'Republic of Korea' || datum.country == 'Japan' || datum.country == 'Canada' || datum.country == 'Germany' || datum.country == 'India' || datum.country == 'United Kingdom'"
+        },
+        {
+            "filter": "datum.year == year_selected"
+        },
+        {
+            "fold": ["p1", "p2", "p3", "p4", "p5", "p6", "p7"],
+            "as": ["problem", "score"]
+        }
+    ],
+    "mark": "rect",
+    "encoding": {
+        "x": {
+            "field": "country",
+            "type": "nominal",
+            "title": "Country"
+        },
+        "y": {
+            "field": "problem",
+            "type": "nominal",
+            "title": "Problem Number"
+        },
+        "color": {
+            "field": "score",
+            "type": "quantitative"
+        }
+    }
+}
