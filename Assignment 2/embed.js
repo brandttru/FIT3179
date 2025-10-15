@@ -7,5 +7,5 @@ function embed(selector, path) {
 embed("#line_chart", "line_chart.vg.json");
 embed("#bubble_chart", "bubble_chart.vg.json");
 embed("#heatmap", "heatmap.vg.json");
-embed("#stacked_area", "stacked_area.vg.json");
+embed("#line_chart_gdp", "line_chart_gdp.vg.json");
 embed("#map", "map.vg.json");
