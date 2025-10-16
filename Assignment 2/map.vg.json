@@ -2,13 +2,6 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 900,
   "height": 500,
-  "title": {
-    "text": "Female Participation in the International Mathematical Olympiad (1993–2024)",
-    "fontSize": 25,
-    "anchor": "middle",
-    "color": "#000000",
-    "offset": 15
-  },
 
   "projection": {"type": "equalEarth"},
 

@@ -2,13 +2,6 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 900,
   "height": 500,
-  "title": {
-    "text": "History of Country Average Points in the IMO (1993-2024)",
-    "fontSize": 25,
-    "anchor": "middle",
-    "color": "#000000",
-    "offset": 15
-  },
   
   "data": {
     "url": "https://raw.githubusercontent.com/brandttru/FIT3179/refs/heads/main/data/timeline_df.csv"

@@ -2,13 +2,6 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 800,
     "height": 600,
-    "title": {
-        "text": "Heatmap of Top Countries' Scores in IMO Problems (1993-2024)",
-        "fontSize": 25,
-        "anchor": "middle",
-        "color": "#000000",
-        "offset": 15
-    },
     "data": {
         "url": "https://raw.githubusercontent.com/brandttru/FIT3179/main/data/country_results_df.csv"
     },
