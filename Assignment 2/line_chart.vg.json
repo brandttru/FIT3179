@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 900,
-  "height": 500,
+  "width": 600,
+  "height": 300,
   
   "data": {
     "url": "https://raw.githubusercontent.com/brandttru/FIT3179/refs/heads/main/data/timeline_df.csv"
@@ -16,15 +16,15 @@
 
   "mark": {
     "type": "line",
-    "point": true,
-    "tooltip": true
+    "point": true
   },
 
   "encoding": {
     "x": {
       "field": "year",
       "type": "temporal",
-      "title": "Year"
+      "title": "Year",
+      "timeUnit": "year"
     },
     "y": {
       "field": "count",
@@ -43,7 +43,11 @@
         "title": "Gender",
         "labelExpr": "datum.label == 'male_contestant' ? 'Male' : 'Female'"
       }
-    }
+    },
+    "tooltip": [
+      {"field": "year", "type": "temporal", "title": "Year", "timeUnit": "year"},
+      {"field": "count", "type": "quantitative", "title": "Number of Male/Female Contestants"}
+    ]
   },
 
   "config": {
