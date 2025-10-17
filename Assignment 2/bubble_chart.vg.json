@@ -19,6 +19,10 @@
     ],
     "transform": [
         {
+            "calculate": "datum.country == 'Commonwealth of Independent States' ? 'Russia' : datum.country == 'Union of Soviet Socialist Republics' ? 'Russia' : datum.country == 'German Democratic Republic' ? 'Germany' : datum.country == 'Türkiye' ? 'Turkey' : datum.country == 'Yugoslavia' ? 'Serbia' : datum.country == 'Czechoslovakia' ? 'Czech Republic' : datum.country == 'Macau' ? 'Macao' : datum.country",
+            "as": "country_merged"
+        },
+        {
             "aggregate": [
                 {"op": "count", "as": "total_appearances"},
                 {"op": "sum", "field": "awards_gold", "as": "no_of_gold"},
@@ -26,23 +30,42 @@
                 {"op": "sum", "field": "awards_bronze", "as": "no_of_bronze"},
                 {"op": "sum", "field": "team_size_all", "as": "total_participants"}
             ],
-            "groupby": ["country"]
+            "groupby": ["country_merged"]
         },
         {
-            "lookup": "country",
+            "lookup": "country_merged",
             "from": {
                 "data": {
-                    "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
-                    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+                    "url": "https://raw.githubusercontent.com/brandttru/FIT3179/refs/heads/main/data/ne_1.json",
+                    "format": {"type": "topojson", "feature": "ne_10m_admin_0_countries"}
                 },
-                "key": "properties.NAME",
+                "key": "properties.NAME",  
                 "fields": ["properties.CONTINENT"]
             },
+            "as": "continent_name"
+        },
+        {
+            "lookup": "country_merged",
+            "from": {
+                "data": {
+                    "url": "https://raw.githubusercontent.com/brandttru/FIT3179/refs/heads/main/data/ne_1.json",
+                    "format": {"type": "topojson", "feature": "ne_10m_admin_0_countries"}
+                },
+                "key": "properties.FORMAL_EN",  
+                "fields": ["properties.CONTINENT"]
+            },
+            "as": "continent_formal"
+        },
+        {
+            "calculate": "datum.continent_name || datum.continent_formal",
             "as": "continent"
         },
         {
             "calculate": "medal_type == 'no_of_gold' ? datum.no_of_gold : medal_type == 'no_of_silver' ? datum.no_of_silver : datum.no_of_bronze",
             "as": "selected_medal_count"
+        },
+        {
+            "filter": "datum.continent != null"
         }
     ],
 
@@ -61,6 +84,13 @@
     
     "layer": [
         {
+            "selection": {
+                "continent_selected": {
+                    "type": "multi",
+                    "fields":["continent"],
+                    "bind": "legend"
+                }
+            },
             "mark": {
                 "type": "circle",
                 "opacity": 0.8
@@ -82,8 +112,12 @@
                         "title": "Continent"
                     }
                 },
+                "opacity": {
+                    "condition": {"selection": "continent_selected", "value": 0.8},
+                    "value": 0.1
+                },
                 "tooltip": [
-                    {"field": "country", "type": "nominal", "title": "Country"},
+                    {"field": "country_merged", "type": "nominal", "title": "Country"},
                     {"field": "continent", "type": "nominal", "title": "Continent"},
                     {"field": "total_appearances", "type": "quantitative", "title": "Appearances"},
                     {"field": "selected_medal_count", "type": "quantitative", "title": "Medals"},
@@ -107,7 +141,7 @@
             },
             "encoding": {
                 "text": {
-                    "field": "country",
+                    "field": "country_merged",
                     "type": "nominal"
                 }
             }

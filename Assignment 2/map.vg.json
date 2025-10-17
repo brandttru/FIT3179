@@ -44,8 +44,8 @@
             "lookup": "country",
             "from": {
                 "data": {
-                    "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
-                    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+                    "url": "https://raw.githubusercontent.com/brandttru/FIT3179/refs/heads/main/data/ne_1.json",
+                    "format": {"type": "topojson", "feature": "ne_10m_admin_0_countries"}
                 },
                 "key": "properties.NAME",
                 "fields": ["type", "geometry", "properties"]
