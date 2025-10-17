@@ -5,6 +5,11 @@
     "data": {
         "url": "https://raw.githubusercontent.com/brandttru/FIT3179/refs/heads/main/data/world-education-data.csv"
     },
+    "transform": [
+        {
+            "filter": "datum.country == 'Australia' || datum.country == 'China' || datum.country == 'United States' || datum.country == 'Russian Federation' || datum.country == 'Korea\\, Dem\\. People\\'s Rep\\.' || datum.country == 'Japan' || datum.country == 'Canada' || datum.country == 'Germany' || datum.country == 'India' || datum.country == 'United Kingdom'"
+        }
+    ],
     "mark": {
         "type": "line",
         "point": true
@@ -27,7 +32,12 @@
             "scale": {
                 "scheme": "category10"
             }
-        }
+        },
+        "tooltip": [
+            {"field": "country", "type": "nominal", "title": "Country"},
+            {"field": "year", "type": "temporal", "title": "Year", "timeUnit": "year"},
+            {"field": "gov_exp_pct_gdp", "type": "quantitative", "title": "Gov Expenditure (% of GDP)"}
+        ]
     },
 
     "config": {
