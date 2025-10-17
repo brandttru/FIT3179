@@ -38,6 +38,10 @@
       "scale": {
         "domain": ["male_contestant", "female_contestant"],
         "range": ["blue", "red"]
+      },
+      "legend": {
+        "title": "Gender",
+        "labelExpr": "datum.label == 'male_contestant' ? 'Male' : 'Female'"
       }
     }
   },
