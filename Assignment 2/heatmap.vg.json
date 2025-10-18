@@ -16,19 +16,60 @@
                 "step": 1,
                 "name": "Year: "
             }
-
+        },
+        {
+            "name": "min_gold",
+            "value": 1,
+            "bind": {
+                "input": "range",
+                "min": 0,
+                "max": 6,
+                "step": 1,
+                "name": "Minimum Gold Medals: "
+            }
+        },
+        {
+            "name": "min_silver",
+            "value": 1,
+            "bind": {
+                "input": "range",
+                "min": 0,
+                "max": 6,
+                "step": 1,
+                "name": "Minimum Silver Medals: "
+            }
+        },
+        {
+            "name": "min_bronze",
+            "value": 2,
+            "bind": {
+                "input": "range",
+                "min": 0,
+                "max": 6,
+                "step": 1,
+                "name": "Minimum Bronze Medals: "
+            }
         }
     ],
     "transform": [
         {
-            "filter": "datum.country == 'Australia' || datum.country == 'People\\'s Republic of China' || datum.country == 'United States of America' || datum.country == 'Russia' || datum.country == 'Republic of Korea' || datum.country == 'Japan' || datum.country == 'Canada' || datum.country == 'Germany' || datum.country == 'India' || datum.country == 'United Kingdom'"
-        },
-        {
             "filter": "datum.year == year_selected"
         },
         {
+            "filter": "datum.awards_gold >= min_gold"
+        },
+        {
+            "filter": "datum.awards_silver >= min_silver"
+        },
+        {
+            "filter": "datum.awards_bronze >= min_bronze"
+        },  
+        {
             "fold": ["p1", "p2", "p3", "p4", "p5", "p6", "p7"],
             "as": ["problem", "score"]
+        },
+        {
+            "filter": "isValid(datum.score)"
         },
         {
             "calculate": "replace(datum.problem, 'p', 'Problem ')",
@@ -40,7 +81,12 @@
         "x": {
             "field": "country",
             "type": "nominal",
-            "title": "Country"
+            "title": "Country",
+            "sort": {
+                "field": "total_score",
+                "op": "max",
+                "order": "descending"
+            }
         },
         "y": {
             "field": "problem_label",
