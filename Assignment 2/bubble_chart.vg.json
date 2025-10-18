@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 600,
+    "width": 1000,
     "height": 600,
     "data": {
         "url": "https://raw.githubusercontent.com/brandttru/FIT3179/main/data/country_results_df.csv"
