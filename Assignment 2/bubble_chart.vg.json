@@ -15,6 +15,15 @@
                 "labels": ["Gold Medals", "Silver Medals", "Bronze Medals"],
                 "name": "Medal Type: "
             }
+        },
+        {
+            "name": "country_search",
+            "bind": {
+                "input": "search",
+                "placeholder": "Country",
+                "name": "Search"
+            },
+            "value": ""
         }
     ],
     "transform": [
@@ -66,6 +75,9 @@
         },
         {
             "filter": "datum.continent != null"
+        },
+        {
+            "filter": "!country_search || test(regexp(country_search,'i'),datum.country_merged)"
         }
     ],
 
@@ -87,7 +99,7 @@
             "selection": {
                 "continent_selected": {
                     "type": "multi",
-                    "fields":["continent"],
+                    "fields": ["continent"],
                     "bind": "legend"
                 }
             },
@@ -113,9 +125,12 @@
                     }
                 },
                 "opacity": {
-                    "condition": {"selection": "continent_selected", "value": 0.8},
-                    "value": 0.1
-                },
+                    "condition": 
+                        {
+                            "selection": "continent_selected", "value": 0.8
+                        }, 
+                    "value":0.1
+                }, 
                 "tooltip": [
                     {"field": "country_merged", "type": "nominal", "title": "Country"},
                     {"field": "continent", "type": "nominal", "title": "Continent"},
@@ -149,9 +164,9 @@
     ],
     
     "config": {
-    "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 14
+        "axis": {
+            "labelFontSize": 12,
+            "titleFontSize": 14
+        }
     }
-  }
 }
