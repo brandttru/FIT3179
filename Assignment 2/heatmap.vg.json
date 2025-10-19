@@ -2,6 +2,7 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 1000,
     "height": 300,
+    "padding": {"bottom": 50},
     "data": {
         "url": "https://raw.githubusercontent.com/brandttru/FIT3179/main/data/country_results_df.csv"
     },
