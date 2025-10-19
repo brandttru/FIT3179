@@ -4,8 +4,8 @@ function embed(selector, path) {
     }).catch(console.error);
 }
 
-embed("#line_chart", "line_chart.vg.json");
+embed("#line_chart_gender", "line_chart_gender.vg.json");
 embed("#bubble_chart", "bubble_chart.vg.json");
 embed("#heatmap", "heatmap.vg.json");
-embed("#line_chart_gdp", "line_chart_gdp.vg.json");
+embed("#line_chart_expenditure", "line_chart_expenditure.vg.json");
 embed("#map", "map.vg.json");
