@@ -21,7 +21,7 @@
             "bind": {
                 "input": "search",
                 "placeholder": "Country",
-                "name": "Search"
+                "name": "Search Country: "
             },
             "value": ""
         }
