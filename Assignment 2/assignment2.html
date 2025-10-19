@@ -23,14 +23,14 @@
 
         <div class="card">
             <p>
-                The Internaional Math Olympiad (IMO) is an annual competition for pre-university students from around the world. The first IMO was held in 1959 in Romania. More than 100 countries participate, with each country sending a team of up to six students, plus one leader, a deputy leader and observers. Due to its emphasis on nationality and gender, there are many underlying trends found in the contestants.
+                The Internaional Math Olympiad (IMO) is an annual competition for pre-university students from around the world. The first IMO was held in 1959 in Romania. More than 100 countries participate, with each country sending a team of up to six students, plus one leader, a deputy leader and observers. Due to its emphasis on nationality and gender, there can be underlying trends found in the relationships between nationality, gender and results.
             </p>
         </div>
 
         <div class="row">
             <div class="card", style="flex: 1;">
                 <h2> Number of Contestants by Gender </h2> 
-                <div id="line_chart"></div> 
+                <div id="line_chart_gender"></div> 
             </div>
             
             <div class="card", style="flex: 2;">
@@ -38,6 +38,7 @@
                 <ul>
                     <li> Both genders show a steady increase in number of contestants </li>
                     <li> Males show greater growth in number of contestants </li>
+                    <li> Notably, 1968 had no female contestants competing </li>
                 </ul>
             </div>
         </div>
@@ -45,31 +46,49 @@
         <div class="card">
             <h2> Medals awarded at the IMO </h2>
             <div id="bubble_chart"></div>
+
             <h2></h2>
             <ul>
                 <li> Despite their numerous appearances, European contestants claim more silver and bronze medals than gold </li>
                 <li> China take home more gold medals than any other country </li>
+                <li> China, USA and Russia have been awarded the most gold medals </li>
+                <li> After 1991, Soviet Union countries entered separately </li>
             </ul>
         </div>
         
         <div class="card">
-            <h2> Top Countries' scores at the IMO</h2>
+            <h2> Countries' scores at the IMO</h2>
             <div id="heatmap"></div>
+
             <h2> </h2>
             <ul>
                 <li> Although scores are determined individually, team scores are compared more often </li>
                 <li> In recent years, problems 1 and 4 tend to be better answered </li>
             </ul>
         </div>
+
         
-        <div class="card">
-            <h2> Number of Women Enrolled in Stem Education </h2>
-            <div id="line_chart_gdp"></div>
-        </div>
+        <div class="card", style="flex: 1;">
+            <h2> Government Expenditure on Education as a % of GDP </h2>
+            <div id="line_chart_expenditure"></div>
+
+            <h2></h2>
+            <ul>
+                <li> Although they are the winningest country, China spends less than its competitors at around 4% per year </li>
+                <li> Australia spends a consistent amount on education </li>
+                <li> Australia spends more than notable European countries as well as China, yet does not have the medals to rival them</li>
+            </ul>
+        </div>        
         
         <div class="card">
             <h2> Female Participation at the IMO </h2>
             <div id="map"></div>
+
+            <h2></h2>
+            <ul>
+                <li> Australia is consistently able to send at least 1 female representative </li>
+                <li> In 2024, all 6 representatives Oman sent were female </li>
+            </ul>
         </div>
     </div>
 </body>
